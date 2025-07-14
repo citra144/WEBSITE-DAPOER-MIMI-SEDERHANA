@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TOKO ROTI & CAKE DAPOER MIMI</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/styles.css" rel="stylesheet">
+		<style>
+      body {
+        padding-top: 60px; 
+      }
+		</style>
+  </head>
+  <body>
+	<!-- Awal script Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="scrollspy">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle Nav</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Home.html">TOKO ROTI & CAKE DAPOER MIMI</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+							<a href="index.html"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a>
+						</li>
+            <li>
+							<a href="about.html"><span class="glyphicon glyphicon-user"></span> About</a>
+						</li>
+			<li>
+							<a href="product.html"><span class="glyphicon glyphicon-picture"></span> product</a>
+						</li>
+            <li class="active">
+							<a href="Checkout.html"><span class="glyphicon glyphicon-info-sign"></span> Checkout</a>
+						</li>
+        <li>
+							<a href="Invoice.html"><span class="glyphicon glyphicon-lock"></span> Invoice</a>
+						</li>
+        <li>
+							<a href="pesanan.html"><span class="glyphicon glyphicon-lock"></span> Pesanan Owner</a>
+						</li>
+          </ul>
+        </div>
+      </div>
+    </nav><!-- Akhir script Navbar -->
+	
+    <!-- Judul halaman checkout -->
+    <div class="container">
+  <h2 class="text-center">Checkout - Keranjang Belanja</h2>
+
+  <!-- Tabel keranjang belanja -->
+  <div id="tabel-keranjang" class="table-responsive"></div>
+
+  <!-- Data pemesan yang sudah diisi akan tampil di sini-->
+  <div id="data-pemesan" style="margin-bottom: 20px; display: none;">
+  <h4><strong>Data Pemesan:</strong></h4>
+  <p><strong>Nama:</strong> <span id="cetak-nama"></span></p>
+  <p><strong>Alamat:</strong> <span id="cetak-alamat"></span></p>
+  <p><strong>Catatan:</strong> <span id="cetak-catatan"></span></p>
+</div>
+
+
+  <!-- Tombol cetak invoice disembunyikan dulu -->
+<div class="text-center" style="margin-top: 20px;">
+  <button onclick="hapusSemua()" class="btn btn-danger">Hapus Semua</button>
+  <button id="btnCetak" onclick="window.location.href='invoice.html'" class="btn btn-primary" style="display: none;">Cetak Invoice</button>
+</div>
+
+  <hr>
+
+  <!-- Form pengisian data pemesan -->
+  <h3>Data Pemesan</h3>
+  <form id="form-pesanan">
+    <div class="form-group">
+      <label>Nama Lengkap</label>
+      <input type="text" class="form-control" id="nama" required>
+    </div>
+    <div class="form-group">
+      <label>Alamat Pengiriman</label>
+      <textarea class="form-control" id="alamat" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Catatan (opsional)</label>
+      <textarea class="form-control" id="catatan" rows="2"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+  </form>
+</div>
+
+  <script>
+  function tampilkanKeranjang() {
+    const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+    let html = "";
+
+    if (keranjang.length === 0) {
+      html = "<p class='text-center'>Keranjang masih kosong.</p>";
+    } else {
+      html = `<table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Produk</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Subtotal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>`;
+
+      let total = 0;
+      keranjang.forEach((item, index) => {
+        const subtotal = item.harga * item.jumlah;
+        total += subtotal;
+        html += `
+          <tr>
+            <td>${item.nama}</td>
+            <td>Rp ${item.harga.toLocaleString()}</td>
+            <td>${item.jumlah}</td>
+            <td>Rp ${subtotal.toLocaleString()}</td>
+            <td><button class="btn btn-danger btn-xs" onclick="hapusItem(${index})">Hapus</button></td>
+          </tr>`;
+      });
+
+      html += `
+        <tr>
+          <td colspan="3"><strong>Total</strong></td>
+          <td colspan="2"><strong>Rp ${total.toLocaleString()}</strong></td>
+        </tr>
+        </tbody>
+      </table>`;
+    }
+
+    document.getElementById("tabel-keranjang").innerHTML = html;
+  }
+
+  function hapusItem(index) {
+    let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+    keranjang.splice(index, 1);
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+    tampilkanKeranjang();
+  }
+
+  function hapusSemua() {
+    if (confirm("Yakin ingin menghapus semua isi keranjang?")) {
+      localStorage.removeItem("keranjang");
+      tampilkanKeranjang();
+    }
+  }
+
+  // FORM PEMESANAN
+  document.getElementById("form-pesanan").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nama = document.getElementById("nama").value;
+    const alamat = document.getElementById("alamat").value;
+    const catatan = document.getElementById("catatan").value;
+    const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+    if (keranjang.length === 0) {
+      alert("Keranjang kosong. Silakan pilih produk terlebih dahulu.");
+      return;
+    }
+
+    // Simpan data invoice ke localStorage
+    localStorage.setItem("invoiceData", JSON.stringify({
+      nama,
+      alamat,
+      catatan,
+      keranjang
+    }));
+
+    // Tampilkan tombol cetak invoice
+    document.getElementById("btnCetak").style.display = "inline-block";
+
+    alert("Data pesanan berhasil disimpan. Klik Cetak Invoice untuk mencetak.");
+  });
+
+  window.onload = tampilkanKeranjang;
+
+  document.getElementById("form-pesanan").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const nama = document.getElementById("nama").value;
+  const alamat = document.getElementById("alamat").value;
+  const catatan = document.getElementById("catatan").value;
+  const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  if (keranjang.length === 0) {
+    alert("Keranjang kosong. Silakan pilih produk terlebih dahulu.");
+    return;
+  }
+
+  const waktuSekarang = new Date().toLocaleString("id-ID");
+
+  const dataPesanan = {
+    nama,
+    alamat,
+    catatan,
+    keranjang,
+    waktu: waktuSekarang
+  };
+
+  // Simpan ke invoiceData untuk dicetak
+  localStorage.setItem("invoiceData", JSON.stringify(dataPesanan));
+
+  // Simpan juga ke daftar pesanan owner
+  const daftarPesanan = JSON.parse(localStorage.getItem("pesananMasuk")) || [];
+  daftarPesanan.push(dataPesanan);
+  localStorage.setItem("pesananMasuk", JSON.stringify(daftarPesanan));
+
+  // Tampilkan tombol cetak invoice
+  document.getElementById("btnCetak").style.display = "inline-block";
+
+  alert("Pesanan berhasil disimpan! Silakan cetak invoice.");
+});
+
+</script>
+
+  <script src="bootstrap/js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/dataTables.bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery.dataTables.js"></script>
+	<script src="bootstrap/js/scripts.js"></script>
+	</body>
+</html>

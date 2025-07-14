@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TOKO ROTI & CAKE DAPOER MIMI</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/styles.css" rel="stylesheet">
+		<style>
+      body {
+        padding-top: 60px; 
+      }
+		</style>
+  </head>
+  <body>
+	<!-- Awal script Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="scrollspy">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle Nav</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Home.html">TOKO ROTI & CAKE DAPOER MIMI</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+        <li>
+							<a href="index.html"><span class="glyphicon glyphicon-home"></span> Home <span class="sr-only">(current)</span></a>
+						</li>
+        <li>
+							<a href="about.html"><span class="glyphicon glyphicon-user"></span> About</a>
+						</li>
+        <li>
+              <li class="active">
+							<a href="product.html"><span class="glyphicon glyphicon-picture"></span> Product</a>
+						</li>
+        <li>
+							<a href="Checkout.html"><span class="glyphicon glyphicon-info-sign"></span> Checkout</a>
+						</li>
+        <li>
+							<a href="Invoice.html"><span class="glyphicon glyphicon-lock"></span> Invoice</a>
+						</li>
+        <li>
+							<a href="pesanan.html"><span class="glyphicon glyphicon-lock"></span> Pesanan Owner</a>
+						</li>
+          </ul>
+        </div>
+      </div>
+    </nav><!-- Akhir script Navbar -->
+		
+      <!--Awal Page-->
+			<div class="container">
+    <div class="page-header text-center">
+      <h1>Daftar Produk Kami</h1>
+      <p>Nikmati aneka pilihan roti dan cake segar buatan rumahan</p>
+    </div>
+    <!-- Awal Panel -->
+    <div class="row text-center">
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/mika mille crepes.jpg.jpg" alt="MIKA MILLE  CREPES">
+          <div class="caption">
+            <h4>MIKA MILLE  CREPES</h4>
+            <p>Dessert dengan lapisan cream,dan toping buah dengan banyak varian rasa.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('MIKA MILLE CREPES', 20000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/mille crepes segitiga.jpg.jpg" alt="MILLE CREPES SEGITIGA">
+          <div class="caption">
+            <h4>MILLE CREPES SEGITIGA</h4>
+            <p>Cocok untuk pecinta manis cake dengan bermacam macam rasa dan toping yang lezaat.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('MILLE CREPES SEGITIGA', 20000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/dessert cup.jpg.jpg" alt="DESSERT CUP">
+          <div class="caption">
+            <h4>DESSERT CUP</h4>
+            <p>Dessert yang berlapis matcha,cream cheese & potongan buah cocok untuk cemilan untuk pecinta manis.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('DESSERT CUP', 15000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/bolu gulung strawberry.jpg.jpg" alt="BOLU GULUNG STRAWBERRY">
+          <div class="caption">
+            <h4>BOLU GULUNG STRAWBERRY</h4>
+            <p>Bolu dengan cream &  isi selai strawberyy didalamnya menambah lezatnya bolu </p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('BOLU GULUNG STRAWBERRY', 40000)">Pesan</button>
+      </div>
+		</div>
+	  </div>
+		  <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/bolu lapis.jpg.jpg" alt="BOLU LAPIS">
+          <div class="caption">
+            <h4>BOLU LAPIS</h4>
+            <p>tanpa pengawet,toping keju yang melimpah,lapisan bolu yang lembut cocok untuk cemilan keluarga dirumah.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('BOLU LAPIS', 30000)">Pesan</button>
+		  </div>
+		</div>
+	  </div>
+		<div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/aneka macam.jpg.jpg" alt="ANEKA MACAM">
+          <div class="caption">
+            <h4>ANEKA MACAM</h4>
+            <p>Tanpa bahan pengawet,cocok untuk sarapan keluarga roti yang lembut dengan bermacam topping.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('ANEKA MACAM', 5000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+		<div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/kue dadar.jpg.jpg" alt="KUE DADAR">
+          <div class="caption">
+            <h4>KUE DADAR</h4>
+            <p>kulit dadar yang lembut dn isian kelapa manis,cocok buat acara arisan & pengajian.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('KUE DADAR', 2000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+		<div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/putu ayu.jpg.jpg" alt="Roti Tawar">
+          <div class="caption">
+            <h4>PUTU AYU</h4>
+            <p>putu ayu yang lembut dengan harum pandan dan lapisan kelapa diatasnya cocok buat acara pengajian dan arisan.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('PUTU AYU', 2000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+        <div class="col-sm-3">
+            <div class="thumbnail">
+          <img src="ASSETS/donat.jpg.jpg" alt="DONAT">
+          <div class="caption">
+            <h4>DONAT</h4>
+            <p>donat lembut dengan topping yang melimpah.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('DONAT', 2000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+        <div class="col-sm-3">
+            <div class="thumbnail">
+          <img src="ASSETS/roti kelapa.jpg.jpg" alt="ROTI KELAPA">
+          <div class="caption">
+            <h4>ROTI KELAPA</h4>
+            <p>roti yang lembut dengan isian kelapa cocok untuk cemilan diruah.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('ROTI KELAPA', 3000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+        <div class="col-sm-3">
+            <div class="thumbnail">
+          <img src="ASSETS/roti coklat.jpg.jpg" alt="ROTI COKLAT">
+          <div class="caption">
+            <h4>ROTI COKLAT</h4>
+            <p>roti dengan lapisan kulit lembut dan isian coklat yg lumer didalamnya. .</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('KUE COKLAT', 5000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm-3">
+            <div class="thumbnail">
+          <img src="ASSETS/kue serabi.jpg.jpg" alt="KUE SERABI">
+          <div class="caption">
+            <h4>KUE SERABI</h4>
+            <p>kue yang lembut dengan kuah yang manis cocok untuk acara arisan & pengajian.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('KUE COKLAT', 5000)">Pesan</button>
+      </div>
+    </div>
+    </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/mille crepes buah.jpg.jpg" alt="MILLE CREPES BUAH">
+          <div class="caption">
+            <h4>MILLE CREPES BUAH</h4>
+            <p>Dessert dengan isian buah segar ditambah creamy nya cream.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('MILLE CREPES BUAH', 20000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/mille crepes roll.jpg.jpg" alt="MILLE CREPES ROLL">
+          <div class="caption">
+            <h4>MILLE CREPES ROLL</h4>
+            <p>Dessert dengan gulungan cream dan potongan buah.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('MILLE CREPES ROLL', 25000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/cup cake.jpg.jpg" alt="CUP CAKE">
+          <div class="caption">
+            <h4>CUP CAKE</h4>
+            <p>Cake yang creamy dengan topping bermacam macam.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('CUP CAKE', 20000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="ASSETS/cromboloni.jpg.jpg" alt="CROMBOLONI">
+          <div class="caption">
+            <h4>CROMBOLONI</h4>
+            <p>Dessert yang renyah diluar dan isian yang lumer didalam.</p>
+            <button class="btn btn-success btn-sm" onclick="tambahKeKeranjang('CROMBOLONI', 20000)">Pesan</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div><!-- Akhir Panel -->
+		</div><!--  Akhir Page -->
+
+    <script>
+  function tambahKeKeranjang(nama, harga) {
+    let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+    let index = keranjang.findIndex(item => item.nama === nama);
+    if (index !== -1) {
+      keranjang[index].jumlah += 1;
+    } else {
+      keranjang.push({ nama: nama, harga: harga, jumlah: 1 });
+    }
+
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+    window.location.href = "Checkout.html"; // Langsung ke halaman checkout
+  }
+</script>
+
+	<script src="bootstrap/js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/dataTables.bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery.dataTables.js"></script>
+	<script src="bootstrap/js/scripts.js"></script>
+	</body>
+</html>
